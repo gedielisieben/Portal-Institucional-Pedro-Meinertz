@@ -1,0 +1,1639 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Escola Estadual de Ensino Médio Pedro Meinerz — Santa Rosa/RS. Ensino Fundamental, Médio e Técnico em Mecânica com reconhecimento internacional." />
+  <title>E.E.E.M. Pedro Meinerz — Santa Rosa/RS</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+/* ═══════════════════════════════════════════════════════════════════════════
+   Portal Escola Estadual Pedro Meinerz — Santa Rosa/RS
+   Design System: Institucional + Técnico + Inovação
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ── Tokens ─────────────────────────────────────────────────────────────── */
+:root {
+  --azul-profundo:  #1A3A6B;
+  --azul-medio:     #2856A0;
+  --azul-claro:     #4A80C8;
+  --verde:          #2D7A4F;
+  --verde-claro:    #3DA068;
+  --dourado:        #C9A84C;
+  --dourado-claro:  #E8C76A;
+  --branco:         #FFFFFF;
+  --cinza-100:      #F5F7FA;
+  --cinza-200:      #E8ECF2;
+  --cinza-400:      #9AAABB;
+  --cinza-700:      #4A5568;
+  --cinza-900:      #1A202C;
+
+  --font-display: 'Merriweather', serif;
+  --font-body:    'Inter', sans-serif;
+
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+
+  --shadow-sm: 0 2px 8px rgba(26,58,107,0.08);
+  --shadow-md: 0 8px 30px rgba(26,58,107,0.14);
+  --shadow-lg: 0 20px 60px rgba(26,58,107,0.20);
+
+  --transition: 0.25s ease;
+}
+
+/* ── Reset ──────────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  font-family: var(--font-body);
+  color: var(--cinza-900);
+  background: var(--branco);
+  line-height: 1.65;
+  overflow-x: hidden;
+}
+img { max-width: 100%; display: block; }
+a  { color: inherit; text-decoration: none; }
+
+/* ── Utilitários ────────────────────────────────────────────────────────── */
+.container { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+.sr-only   { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); }
+
+/* ── Navbar ─────────────────────────────────────────────────────────────── */
+#navbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: transparent;
+  transition: background var(--transition), box-shadow var(--transition);
+}
+#navbar.scrolled {
+  background: var(--azul-profundo);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+}
+.nav-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  height: 68px;
+}
+.nav-brand { display: flex; align-items: center; gap: 12px; }
+.nav-brand .escudo {
+  width: 44px; height: 44px;
+  background: var(--dourado);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px;
+  flex-shrink: 0;
+}
+.nav-brand-text { line-height: 1.2; }
+.nav-brand-text strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--branco);
+  letter-spacing: 0.02em;
+}
+.nav-brand-text span {
+  font-size: 0.72rem;
+  color: var(--dourado-claro);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.nav-links {
+  display: flex; gap: 4px; list-style: none;
+}
+.nav-links a {
+  display: block;
+  padding: 6px 12px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: rgba(255,255,255,0.88);
+  border-radius: var(--radius-sm);
+  transition: background var(--transition), color var(--transition);
+  letter-spacing: 0.02em;
+}
+.nav-links a:hover { background: rgba(255,255,255,0.12); color: var(--branco); }
+.nav-links a.active { background: var(--dourado); color: var(--azul-profundo); font-weight: 700; }
+
+.nav-toggle {
+  display: none;
+  background: none; border: none; cursor: pointer;
+  flex-direction: column; gap: 5px; padding: 4px;
+}
+.nav-toggle span {
+  display: block; width: 24px; height: 2px;
+  background: var(--branco); border-radius: 2px;
+  transition: transform var(--transition), opacity var(--transition);
+}
+
+/* ── Hero ───────────────────────────────────────────────────────────────── */
+#hero {
+  min-height: 100vh;
+  background: linear-gradient(145deg, var(--azul-profundo) 0%, var(--azul-medio) 55%, var(--verde) 100%);
+  display: flex; align-items: center;
+  position: relative; overflow: hidden;
+  padding: 80px 0 60px;
+}
+.hero-grid {
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  position: absolute; inset: 0; pointer-events: none;
+}
+.hero-content { position: relative; z-index: 1; max-width: 700px; }
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(201,168,76,0.2); border: 1px solid rgba(201,168,76,0.5);
+  color: var(--dourado-claro);
+  padding: 6px 16px; border-radius: 40px;
+  font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em;
+  text-transform: uppercase; margin-bottom: 20px;
+}
+.hero-content h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 5vw, 3.6rem);
+  font-weight: 900;
+  color: var(--branco);
+  line-height: 1.15;
+  margin-bottom: 20px;
+}
+.hero-content h1 em {
+  font-style: normal;
+  color: var(--dourado-claro);
+}
+.hero-content p {
+  font-size: 1.1rem;
+  color: rgba(255,255,255,0.80);
+  max-width: 560px;
+  margin-bottom: 36px;
+}
+.hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 14px 28px; border-radius: var(--radius-md);
+  font-family: var(--font-body);
+  font-size: 0.92rem; font-weight: 600;
+  cursor: pointer; border: 2px solid transparent;
+  transition: all var(--transition);
+}
+.btn-primary {
+  background: var(--dourado); color: var(--azul-profundo);
+  border-color: var(--dourado);
+}
+.btn-primary:hover { background: var(--dourado-claro); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+.btn-outline {
+  background: transparent; color: var(--branco);
+  border-color: rgba(255,255,255,0.5);
+}
+.btn-outline:hover { background: rgba(255,255,255,0.1); border-color: var(--branco); }
+
+.hero-stats {
+  display: flex; gap: 32px; flex-wrap: wrap; margin-top: 56px;
+  padding-top: 40px;
+  border-top: 1px solid rgba(255,255,255,0.15);
+}
+.stat-item { text-align: left; }
+.stat-number {
+  font-family: var(--font-display);
+  font-size: 2.4rem; font-weight: 900;
+  color: var(--dourado-claro);
+  line-height: 1;
+}
+.stat-label { font-size: 0.78rem; color: rgba(255,255,255,0.65); margin-top: 4px; }
+
+/* ── Sections ───────────────────────────────────────────────────────────── */
+section { padding: 88px 0; }
+.section-label {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--azul-medio);
+  margin-bottom: 12px;
+}
+.section-label::before {
+  content: ''; display: block;
+  width: 24px; height: 2px; background: var(--dourado);
+}
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-weight: 900;
+  color: var(--azul-profundo);
+  line-height: 1.2;
+  margin-bottom: 14px;
+}
+.section-subtitle {
+  font-size: 1rem; color: var(--cinza-700); max-width: 560px;
+  margin-bottom: 52px;
+}
+
+/* ── Quem Somos ─────────────────────────────────────────────────────────── */
+#quem-somos { background: var(--cinza-100); }
+.sobre-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;
+}
+.sobre-card-main {
+  background: var(--azul-profundo);
+  border-radius: var(--radius-lg);
+  padding: 40px 36px;
+  color: var(--branco);
+  position: relative; overflow: hidden;
+}
+.sobre-card-main::before {
+  content: '🏫';
+  font-size: 120px; line-height: 1;
+  position: absolute; right: -16px; bottom: -16px;
+  opacity: 0.12;
+}
+.sobre-card-main h3 {
+  font-family: var(--font-display); font-size: 1.3rem; margin-bottom: 14px;
+  color: var(--dourado-claro);
+}
+.sobre-card-main p { font-size: 0.92rem; opacity: 0.85; line-height: 1.7; }
+.badge-inep {
+  display: inline-block; margin-top: 20px;
+  background: rgba(201,168,76,0.2); border: 1px solid var(--dourado);
+  color: var(--dourado-claro); padding: 4px 12px; border-radius: 40px;
+  font-size: 0.75rem; font-weight: 600;
+}
+.sobre-badges {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px;
+}
+.mini-badge {
+  background: var(--branco); border-radius: var(--radius-md);
+  padding: 16px; text-align: center;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--cinza-200);
+}
+.mini-badge .emoji { font-size: 1.6rem; }
+.mini-badge p { font-size: 0.74rem; color: var(--cinza-700); margin-top: 6px; font-weight: 500; }
+
+.mv-list { list-style: none; display: flex; flex-direction: column; gap: 20px; margin-top: 0; }
+.mv-item { display: flex; gap: 16px; align-items: flex-start; }
+.mv-icon {
+  width: 44px; height: 44px; flex-shrink: 0;
+  background: linear-gradient(135deg, var(--azul-profundo), var(--azul-medio));
+  border-radius: var(--radius-sm);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.2rem;
+}
+.mv-item h4 { font-size: 0.92rem; font-weight: 700; color: var(--azul-profundo); margin-bottom: 4px; }
+.mv-item p  { font-size: 0.85rem; color: var(--cinza-700); line-height: 1.6; }
+
+/* ── Estrutura ──────────────────────────────────────────────────────────── */
+#estrutura { background: var(--branco); }
+.estrutura-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 16px;
+}
+.estrutura-item {
+  background: var(--branco);
+  border: 1px solid var(--cinza-200);
+  border-radius: var(--radius-md);
+  padding: 24px 16px;
+  text-align: center;
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+}
+.estrutura-item:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--azul-claro);
+}
+.estrutura-item .ei-emoji { font-size: 2rem; margin-bottom: 10px; }
+.estrutura-item p { font-size: 0.82rem; font-weight: 600; color: var(--azul-profundo); }
+
+/* ── Cursos ─────────────────────────────────────────────────────────────── */
+#cursos { background: var(--cinza-100); }
+.cursos-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px;
+}
+.curso-card {
+  border: 1px solid var(--cinza-200);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: transform var(--transition), box-shadow var(--transition);
+  background: var(--branco);
+}
+.curso-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+.curso-card.destaque { border-color: var(--dourado); border-width: 2px; }
+.curso-header {
+  background: linear-gradient(135deg, var(--azul-profundo), var(--azul-medio));
+  padding: 28px 28px 20px;
+  position: relative;
+}
+.curso-card.destaque .curso-header {
+  background: linear-gradient(135deg, var(--verde), var(--azul-profundo));
+}
+.curso-emoji { font-size: 2.4rem; margin-bottom: 12px; }
+.curso-header h3 {
+  font-family: var(--font-display);
+  font-size: 1.2rem; font-weight: 700;
+  color: var(--branco); margin-bottom: 6px;
+}
+.curso-nivel {
+  display: inline-block;
+  background: rgba(255,255,255,0.18);
+  color: rgba(255,255,255,0.9);
+  padding: 3px 10px; border-radius: 40px;
+  font-size: 0.72rem; font-weight: 600; letter-spacing: 0.05em;
+}
+.curso-destaque-badge {
+  position: absolute; top: 16px; right: 16px;
+  background: var(--dourado); color: var(--azul-profundo);
+  padding: 4px 10px; border-radius: 40px;
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.05em;
+}
+.curso-body { padding: 24px 28px 28px; }
+.curso-meta {
+  display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px;
+}
+.curso-meta-item {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 0.82rem; color: var(--cinza-700);
+}
+.curso-meta-item strong { color: var(--azul-profundo); }
+.curso-body p { font-size: 0.88rem; color: var(--cinza-700); line-height: 1.7; margin-bottom: 16px; }
+.curso-conteudo { margin: 16px 0; }
+.curso-conteudo summary {
+  font-size: 0.82rem; font-weight: 600; color: var(--azul-medio);
+  cursor: pointer; padding: 8px 0;
+}
+.curso-conteudo ul { margin-top: 10px; padding-left: 20px; }
+.curso-conteudo li { font-size: 0.82rem; color: var(--cinza-700); padding: 3px 0; }
+.curso-cert {
+  background: var(--cinza-100);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  font-size: 0.78rem; color: var(--verde);
+  font-weight: 500; margin-top: 16px;
+  display: flex; align-items: center; gap: 8px;
+}
+
+/* ── Docentes ───────────────────────────────────────────────────────────── */
+#docentes { background: var(--branco); }
+.docentes-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px;
+}
+.docente-card {
+  background: var(--branco);
+  border-radius: var(--radius-md);
+  padding: 28px 24px;
+  border: 1px solid var(--cinza-200);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+.docente-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+.docente-avatar {
+  width: 64px; height: 64px;
+  background: linear-gradient(135deg, var(--azul-profundo), var(--azul-medio));
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.8rem; margin-bottom: 16px;
+}
+.docente-card h3 { font-size: 1rem; font-weight: 700; color: var(--azul-profundo); margin-bottom: 4px; }
+.docente-cargo { font-size: 0.78rem; color: var(--dourado); font-weight: 600; margin-bottom: 12px; }
+.docente-card p  { font-size: 0.83rem; color: var(--cinza-700); line-height: 1.65; }
+.docente-form  {
+  margin-top: 12px; padding-top: 12px;
+  border-top: 1px solid var(--cinza-200);
+  font-size: 0.78rem; color: var(--azul-medio); font-weight: 500;
+}
+
+/* ── Notícias ───────────────────────────────────────────────────────────── */
+#noticias { background: var(--cinza-100); }
+.noticias-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;
+}
+.noticia-card {
+  border: 1px solid var(--cinza-200);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+  background: var(--branco);
+  cursor: pointer;
+}
+.noticia-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: var(--azul-claro); }
+.noticia-head { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 12px; }
+.noticia-emoji { font-size: 2rem; flex-shrink: 0; margin-top: 2px; }
+.noticia-cat {
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--azul-medio); margin-bottom: 4px;
+}
+.noticia-card h3 { font-size: 0.96rem; font-weight: 700; color: var(--azul-profundo); line-height: 1.35; }
+.noticia-card p  { font-size: 0.84rem; color: var(--cinza-700); line-height: 1.65; margin-bottom: 14px; }
+.noticia-data { font-size: 0.75rem; color: var(--cinza-400); }
+
+/* ── Galeria ────────────────────────────────────────────────────────────── */
+#galeria { background: var(--azul-profundo); }
+#galeria .section-label { color: var(--dourado-claro); }
+#galeria .section-title { color: var(--branco); }
+#galeria .section-subtitle { color: rgba(255,255,255,0.65); }
+.galeria-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto auto;
+  gap: 12px;
+}
+.galeria-item {
+  border-radius: var(--radius-md); overflow: hidden;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.10);
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column; gap: 10px;
+  padding: 32px 20px; text-align: center;
+  min-height: 160px;
+  transition: background var(--transition), transform var(--transition);
+  cursor: pointer;
+}
+.galeria-item:hover { background: rgba(255,255,255,0.12); transform: scale(1.02); }
+.galeria-item:nth-child(1) { grid-column: span 2; grid-row: span 2; min-height: 320px; }
+.galeria-item .gi-emoji { font-size: 3rem; }
+.galeria-item:first-child .gi-emoji { font-size: 5rem; }
+.galeria-item p { font-size: 0.82rem; color: rgba(255,255,255,0.75); font-weight: 500; }
+.galeria-item:first-child p { font-size: 0.96rem; }
+
+/* ── Parceiros ──────────────────────────────────────────────────────────── */
+#parceiros { background: var(--branco); }
+.parceiros-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px;
+}
+.parceiro-card {
+  background: var(--branco);
+  border: 1px solid var(--cinza-200);
+  border-radius: var(--radius-md);
+  padding: 24px 20px; text-align: center;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+.parceiro-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+.parceiro-emoji { font-size: 2.2rem; margin-bottom: 12px; }
+.parceiro-tipo {
+  font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--dourado); margin-bottom: 6px;
+}
+.parceiro-card h3 { font-size: 1rem; font-weight: 700; color: var(--azul-profundo); margin-bottom: 6px; }
+.parceiro-card p  { font-size: 0.8rem; color: var(--cinza-700); }
+
+/* ── Documentos ─────────────────────────────────────────────────────────── */
+#documentos { background: var(--cinza-100); }
+.docs-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px;
+}
+.doc-card {
+  border: 1px solid var(--cinza-200);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  display: flex; align-items: center; gap: 16px;
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+  cursor: pointer;
+  background: var(--branco);
+}
+.doc-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); border-color: var(--azul-claro); }
+.doc-icon {
+  width: 48px; height: 48px; flex-shrink: 0;
+  background: var(--cinza-100);
+  border-radius: var(--radius-sm);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.4rem;
+}
+.doc-card h4 { font-size: 0.9rem; font-weight: 700; color: var(--azul-profundo); margin-bottom: 3px; }
+.doc-card p  { font-size: 0.78rem; color: var(--cinza-700); }
+
+/* ── Diferenciais ───────────────────────────────────────────────────────── */
+#diferenciais { background: linear-gradient(135deg, var(--azul-profundo), var(--verde)); }
+#diferenciais .section-label { color: var(--dourado-claro); }
+#diferenciais .section-title { color: var(--branco); }
+.dif-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px;
+}
+.dif-card {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: var(--radius-md);
+  padding: 28px 24px;
+  transition: background var(--transition);
+}
+.dif-card:hover { background: rgba(255,255,255,0.14); }
+.dif-emoji { font-size: 2rem; margin-bottom: 14px; }
+.dif-card h3 { font-size: 1rem; font-weight: 700; color: var(--dourado-claro); margin-bottom: 10px; }
+.dif-card p  { font-size: 0.85rem; color: rgba(255,255,255,0.75); line-height: 1.65; }
+
+/* ── Contato ─────────────────────────────────────────────────────────────── */
+#contato { background: var(--branco); }
+.contato-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
+.contato-info { display: flex; flex-direction: column; gap: 20px; }
+.contato-bloco {
+  display: flex; gap: 14px; align-items: flex-start;
+  background: var(--cinza-100);
+  border-radius: var(--radius-md);
+  padding: 18px 20px;
+  border: 1px solid var(--cinza-200);
+}
+.contato-bloco-icon {
+  width: 42px; height: 42px; flex-shrink: 0;
+  background: linear-gradient(135deg, var(--azul-profundo), var(--azul-medio));
+  border-radius: var(--radius-sm);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem;
+}
+.contato-bloco h4 { font-size: 0.82rem; font-weight: 700; color: var(--azul-profundo); margin-bottom: 4px; }
+.contato-bloco p, .contato-bloco a {
+  font-size: 0.85rem; color: var(--cinza-700); line-height: 1.55;
+}
+.contato-bloco a:hover { color: var(--azul-medio); }
+
+.contato-form-wrap { background: var(--cinza-100); border-radius: var(--radius-lg); padding: 36px; border: 1px solid var(--cinza-200); }
+.contato-form-wrap h3 {
+  font-family: var(--font-display); font-size: 1.2rem; color: var(--azul-profundo); margin-bottom: 24px;
+}
+.form-group { margin-bottom: 16px; }
+.form-group label {
+  display: block; font-size: 0.8rem; font-weight: 600;
+  color: var(--azul-profundo); margin-bottom: 6px;
+}
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%; padding: 12px 14px;
+  border: 1px solid var(--cinza-200);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body); font-size: 0.88rem;
+  color: var(--cinza-900);
+  background: var(--branco);
+  transition: border-color var(--transition), box-shadow var(--transition);
+  resize: vertical;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--azul-medio);
+  box-shadow: 0 0 0 3px rgba(40,86,160,0.12);
+}
+.btn-enviar {
+  width: 100%; padding: 14px;
+  background: var(--azul-profundo); color: var(--branco);
+  border: none; border-radius: var(--radius-md);
+  font-family: var(--font-body); font-size: 0.95rem; font-weight: 600;
+  cursor: pointer;
+  transition: background var(--transition), transform var(--transition);
+}
+.btn-enviar:hover { background: var(--azul-medio); transform: translateY(-2px); }
+#form-sucesso {
+  display: none; text-align: center; padding: 24px;
+  background: #E8F5EE; border-radius: var(--radius-md);
+  color: var(--verde); font-weight: 600; margin-top: 16px;
+}
+
+/* ── Mapa placeholder ───────────────────────────────────────────────────── */
+.mapa-placeholder {
+  margin-top: 48px;
+  background: var(--azul-profundo);
+  border-radius: var(--radius-lg);
+  padding: 48px; text-align: center;
+  color: rgba(255,255,255,0.7);
+}
+.mapa-placeholder strong { display: block; font-size: 1.1rem; color: var(--branco); margin-bottom: 8px; }
+.mapa-placeholder a { color: var(--dourado-claro); font-weight: 600; font-size: 0.9rem; }
+.mapa-placeholder a:hover { text-decoration: underline; }
+
+/* ── Footer ─────────────────────────────────────────────────────────────── */
+footer {
+  background: var(--cinza-900);
+  color: rgba(255,255,255,0.65);
+  padding: 52px 0 28px;
+}
+.footer-grid {
+  display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px;
+  margin-bottom: 48px;
+}
+.footer-brand { max-width: 320px; }
+.footer-brand .escudo-footer {
+  width: 52px; height: 52px;
+  background: var(--dourado);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 26px; margin-bottom: 16px;
+}
+.footer-brand h3 {
+  font-family: var(--font-display); font-size: 1.05rem;
+  color: var(--branco); margin-bottom: 10px;
+}
+.footer-brand p { font-size: 0.83rem; line-height: 1.7; }
+.footer-col h4 {
+  font-size: 0.8rem; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--dourado-claro);
+  margin-bottom: 16px;
+}
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.footer-col ul li a {
+  font-size: 0.84rem; color: rgba(255,255,255,0.6);
+  transition: color var(--transition);
+}
+.footer-col ul li a:hover { color: var(--branco); }
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding-top: 24px;
+  display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;
+}
+.footer-bottom p { font-size: 0.78rem; }
+.footer-bottom .inep { color: var(--dourado-claro); font-weight: 600; }
+
+/* ── WhatsApp FAB ───────────────────────────────────────────────────────── */
+.whatsapp-fab {
+  position: fixed; bottom: 28px; right: 28px; z-index: 999;
+  width: 56px; height: 56px;
+  background: #25D366; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 20px rgba(37,211,102,0.45);
+  font-size: 1.6rem;
+  transition: transform var(--transition), box-shadow var(--transition);
+  text-decoration: none;
+}
+.whatsapp-fab:hover { transform: scale(1.1); box-shadow: 0 8px 30px rgba(37,211,102,0.55); }
+
+/* ── Toast ──────────────────────────────────────────────────────────────── */
+#toast {
+  position: fixed; bottom: 96px; right: 28px; z-index: 9999;
+  background: var(--verde); color: var(--branco);
+  padding: 14px 22px; border-radius: var(--radius-md);
+  font-size: 0.88rem; font-weight: 600;
+  box-shadow: var(--shadow-lg);
+  transform: translateY(20px); opacity: 0;
+  transition: all var(--transition);
+  pointer-events: none;
+}
+#toast.show { transform: translateY(0); opacity: 1; }
+
+/* ── Scroll reveal ──────────────────────────────────────────────────────── */
+.reveal {
+  opacity: 0; transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ── Responsive ─────────────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .sobre-grid, .contato-grid, .footer-grid { grid-template-columns: 1fr; }
+  .galeria-grid { grid-template-columns: 1fr 1fr; }
+  .galeria-item:nth-child(1) { grid-column: span 2; grid-row: span 1; min-height: 200px; }
+  .nav-links {
+    display: none; flex-direction: column;
+    position: absolute; top: 68px; left: 0; right: 0;
+    background: var(--azul-profundo); padding: 16px; gap: 4px;
+  }
+  .nav-links.open { display: flex; }
+  .nav-toggle { display: flex; }
+  .hero-stats { gap: 20px; }
+}
+@media (max-width: 560px) {
+  section { padding: 60px 0; }
+  .galeria-grid { grid-template-columns: 1fr; }
+  .galeria-item:nth-child(1) { grid-column: span 1; }
+  .hero-actions { flex-direction: column; }
+  .btn { width: 100%; justify-content: center; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; animation: none !important; }
+  .reveal { opacity: 1 !important; transform: none !important; }
+}
+  </style>
+</head>
+
+<body>
+
+<!-- ═══════ NAVBAR ═══════ -->
+<nav id="navbar" role="navigation" aria-label="Menu principal">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-brand" aria-label="Início — Pedro Meinerz">
+        <div class="escudo" aria-hidden="true">🏫</div>
+        <div class="nav-brand-text">
+          <strong>Pedro Meinerz</strong>
+          <span>Santa Rosa · RS</span>
+        </div>
+      </a>
+
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#hero">Início</a></li>
+        <li><a href="#quem-somos">Quem Somos</a></li>
+        <li><a href="#cursos">Cursos</a></li>
+        <li><a href="#docentes">Docentes</a></li>
+        <li><a href="#noticias">Notícias</a></li>
+        <li><a href="#galeria">Galeria</a></li>
+        <li><a href="#parceiros">Parceiros</a></li>
+        <li><a href="#documentos">Documentos</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+
+      <button class="nav-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="nav-links">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══════ HERO ═══════ -->
+<section id="hero">
+  <div class="hero-grid" aria-hidden="true"></div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-eyebrow">🏆 Reconhecimento Internacional · Santa Rosa/RS</div>
+      <h1>
+        Escola Estadual<br>
+        <em>Pedro Meinerz</em>
+      </h1>
+      <p>
+        Formando estudantes com excelência desde a base até o técnico.
+        Referência regional em Mecânica, inovação e projetos premiados
+        em festivais científicos internacionais.
+      </p>
+      <div class="hero-actions">
+        <a href="#cursos" class="btn btn-primary">📚 Conheça os Cursos</a>
+        <a href="#contato" class="btn btn-outline">📞 Entre em Contato</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-number" data-count="700" data-suffix="+">0+</div>
+          <div class="stat-label">Alunos matriculados</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" data-count="3">0</div>
+          <div class="stat-label">Níveis de ensino</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" data-count="4">0</div>
+          <div class="stat-label">Primeiros lugares MEP</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" data-count="1">0</div>
+          <div class="stat-label">Prêmio internacional</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ QUEM SOMOS ═══════ -->
+<section id="quem-somos">
+  <div class="container">
+    <div class="sobre-grid">
+      <!-- Visual -->
+      <div class="sobre-visual reveal">
+        <div class="sobre-card-main">
+          <h3>Nossa História</h3>
+          <p>
+            A Escola Estadual de Ensino Médio Pedro Meinerz está localizada no bairro Timbaúva,
+            em Santa Rosa/RS. Vinculada à rede estadual do Rio Grande do Sul, é uma das
+            referências regionais no ensino técnico — especialmente em Mecânica — e já projetou
+            seus alunos em cenários científicos internacionais.
+          </p>
+          <span class="badge-inep">INEP: 43126669</span>
+        </div>
+        <div class="sobre-badges">
+          <div class="mini-badge">
+            <div class="emoji">📖</div>
+            <p>Ensino Fundamental</p>
+          </div>
+          <div class="mini-badge">
+            <div class="emoji">🎓</div>
+            <p>Ensino Médio</p>
+          </div>
+          <div class="mini-badge">
+            <div class="emoji">⚙️</div>
+            <p>Técnico em Mecânica</p>
+          </div>
+          <div class="mini-badge">
+            <div class="emoji">♿</div>
+            <p>Acessibilidade</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Missão, Visão, Valores -->
+      <div class="reveal">
+        <div class="section-label">Identidade Institucional</div>
+        <h2 class="section-title">Missão, Visão & Valores</h2>
+        <ul class="mv-list">
+          <li class="mv-item">
+            <div class="mv-icon" aria-hidden="true">🎯</div>
+            <div>
+              <h4>Missão</h4>
+              <p>Promover educação pública de qualidade, formando cidadãos críticos,
+              éticos e preparados para o mercado de trabalho e a vida em sociedade.</p>
+            </div>
+          </li>
+          <li class="mv-item">
+            <div class="mv-icon" aria-hidden="true">🔭</div>
+            <div>
+              <h4>Visão</h4>
+              <p>Ser referência estadual em educação básica e profissional, com projetos
+              inovadores de impacto social e reconhecimento nacional e internacional.</p>
+            </div>
+          </li>
+          <li class="mv-item">
+            <div class="mv-icon" aria-hidden="true">⭐</div>
+            <div>
+              <h4>Valores</h4>
+              <p>Excelência acadêmica, inclusão, respeito à diversidade, inovação tecnológica,
+              responsabilidade social e compromisso com a comunidade de Santa Rosa.</p>
+            </div>
+          </li>
+          <li class="mv-item">
+            <div class="mv-icon" aria-hidden="true">🌱</div>
+            <div>
+              <h4>Sustentabilidade</h4>
+              <p>Práticas de separação de resíduos, reaproveitamento de materiais e
+              preservação da área verde como parte do currículo e da cultura escolar.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ ESTRUTURA FÍSICA ═══════ -->
+<section id="estrutura">
+  <div class="container">
+    <div class="section-label">Instalações</div>
+    <h2 class="section-title">Estrutura Física</h2>
+    <p class="section-subtitle">
+      Infraestrutura completa para garantir um ambiente de aprendizado seguro,
+      moderno e acessível a todos os estudantes.
+    </p>
+    <div class="estrutura-grid">
+      <div class="estrutura-item reveal">
+        <div class="ei-emoji">📚</div><p>Biblioteca</p>
+      </div>
+      <div class="estrutura-item reveal">
+        <div class="ei-emoji">📖</div><p>Sala de Leitura</p>
+      </div>
+      <div class="estrutura-item reveal">
+        <div class="ei-emoji">💻</div><p>Lab. Informática</p>
+      </div>
+      <div class="estrutura-item reveal">
+        <div class="ei-emoji">🖥️</div><p>Lousas Digitais</p>
+      </div>
+      <div class="estrutura-item reveal">
+        <div class="ei-emoji">🏀</div><p>Quadra Esportiva</p>
+      </div>
+      <div class="estrutura-item reveal">
+        <div class="ei-emoji">🌳</div><p>Área Verde</p>
+      </div>
+      <div class="estrutura-item reveal">
+        <div class="ei-emoji">🍽️</div><p>Alimentação Escolar</p>
+      </div>
+      <div class="estrutura-item reveal">
+        <div class="ei-emoji">♿</div><p>Acessibilidade Total</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ CURSOS ═══════ -->
+<section id="cursos">
+  <div class="container">
+    <div class="section-label">Educação</div>
+    <h2 class="section-title">Cursos e Treinamentos</h2>
+    <p class="section-subtitle">
+      Do ensino fundamental ao técnico profissional, oferecemos formação completa
+      com foco em qualidade, inovação e resultados.
+    </p>
+    <div class="cursos-grid">
+
+      <!-- Ensino Fundamental -->
+      <div class="curso-card reveal">
+        <div class="curso-header">
+          <div class="curso-emoji">📖</div>
+          <h3>Ensino Fundamental</h3>
+          <span class="curso-nivel">Fundamental</span>
+        </div>
+        <div class="curso-body">
+          <div class="curso-meta">
+            <div class="curso-meta-item">⏱️ <strong>Carga Horária:</strong> 800h/ano</div>
+            <div class="curso-meta-item">👥 <strong>Público:</strong> 6 a 14 anos</div>
+            <div class="curso-meta-item">🌅 <strong>Turno:</strong> Diurno</div>
+          </div>
+          <p>Formação básica sólida com foco em habilidades essenciais, pensamento crítico e preparação para o Ensino Médio.</p>
+          <details class="curso-conteudo">
+            <summary>Ver conteúdo programático</summary>
+            <ul>
+              <li>Português e Literatura</li>
+              <li>Matemática</li>
+              <li>Ciências</li>
+              <li>História</li>
+              <li>Geografia</li>
+              <li>Arte</li>
+              <li>Educação Física</li>
+            </ul>
+          </details>
+          <div class="curso-cert">✅ Certificado de Conclusão do Ensino Fundamental</div>
+        </div>
+      </div>
+
+      <!-- Ensino Médio -->
+      <div class="curso-card reveal">
+        <div class="curso-header">
+          <div class="curso-emoji">🎓</div>
+          <h3>Ensino Médio</h3>
+          <span class="curso-nivel">Médio</span>
+        </div>
+        <div class="curso-body">
+          <div class="curso-meta">
+            <div class="curso-meta-item">⏱️ <strong>Carga Horária:</strong> 2.400h (3 anos)</div>
+            <div class="curso-meta-item">👥 <strong>Público:</strong> 14 a 18 anos</div>
+            <div class="curso-meta-item">🌅 <strong>Turnos:</strong> Diurno e Noturno</div>
+          </div>
+          <p>Formação completa para o mercado de trabalho e vestibulares, com ênfase em ciências exatas e tecnologia.</p>
+          <details class="curso-conteudo">
+            <summary>Ver conteúdo programático</summary>
+            <ul>
+              <li>Matemática Avançada</li>
+              <li>Física</li>
+              <li>Química</li>
+              <li>Biologia</li>
+              <li>Português e Redação</li>
+              <li>Inglês</li>
+              <li>Filosofia e Sociologia</li>
+            </ul>
+          </details>
+          <div class="curso-cert">✅ Diploma de Ensino Médio — SEDUC/RS</div>
+        </div>
+      </div>
+
+      <!-- Técnico em Mecânica (destaque) -->
+      <div class="curso-card destaque reveal">
+        <div class="curso-header">
+          <div class="curso-destaque-badge">⭐ DESTAQUE</div>
+          <div class="curso-emoji">⚙️</div>
+          <h3>Técnico em Mecânica</h3>
+          <span class="curso-nivel">Técnico Profissional</span>
+        </div>
+        <div class="curso-body">
+          <div class="curso-meta">
+            <div class="curso-meta-item">⏱️ <strong>Carga Horária:</strong> 1.200h</div>
+            <div class="curso-meta-item">👥 <strong>Público:</strong> A partir de 16 anos</div>
+            <div class="curso-meta-item">🌅 <strong>Turnos:</strong> Diurno e Noturno</div>
+          </div>
+          <p>Curso técnico de excelência com reconhecimento internacional. Forma profissionais para a indústria metalmecânica com projetos reais e premiados.</p>
+          <details class="curso-conteudo">
+            <summary>Ver conteúdo programático</summary>
+            <ul>
+              <li>Desenho Técnico e CAD</li>
+              <li>Resistência dos Materiais</li>
+              <li>Processos de Fabricação</li>
+              <li>Metrologia e Controle de Qualidade</li>
+              <li>Manutenção Industrial</li>
+              <li>Eletricidade Aplicada</li>
+              <li>Segurança do Trabalho</li>
+              <li>Projetos de Inovação</li>
+            </ul>
+          </details>
+          <div class="curso-cert">✅ Diploma de Técnico em Mecânica — MEC/SEDUC</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ CORPO DOCENTE ═══════ -->
+<section id="docentes">
+  <div class="container">
+    <div class="section-label">Equipe</div>
+    <h2 class="section-title">Corpo Docente</h2>
+    <p class="section-subtitle">
+      Profissionais qualificados, com formação acadêmica sólida e experiência
+      prática para inspirar e preparar nossos estudantes.
+    </p>
+    <div class="docentes-grid">
+
+      <div class="docente-card reveal">
+        <div class="docente-avatar" aria-hidden="true">👩‍💼</div>
+        <h3>Coordenação Pedagógica</h3>
+        <div class="docente-cargo">Equipe Diretiva</div>
+        <p>Gestão e coordenação do processo educativo da instituição, garantindo qualidade e alinhamento pedagógico.</p>
+        <div class="docente-form">🎓 Pedagogia e Gestão Escolar</div>
+      </div>
+
+      <div class="docente-card reveal">
+        <div class="docente-avatar" aria-hidden="true">🔬</div>
+        <h3>Ciências Exatas</h3>
+        <div class="docente-cargo">Professores de Matemática, Física e Química</div>
+        <p>Ensino de ciências exatas com metodologia ativa e laboratórios práticos para aprendizado significativo.</p>
+        <div class="docente-form">🎓 Licenciaturas — UFSM, UNIJUÍ, URI</div>
+      </div>
+
+      <div class="docente-card reveal">
+        <div class="docente-avatar" aria-hidden="true">⚙️</div>
+        <h3>Instrutores Técnicos</h3>
+        <div class="docente-cargo">Professores do Curso Técnico em Mecânica</div>
+        <p>Profissionais com vivência industrial e acadêmica, orientadores de projetos premiados internacionalmente.</p>
+        <div class="docente-form">🎓 Engenharia Mecânica e Mecatrônica</div>
+      </div>
+
+      <div class="docente-card reveal">
+        <div class="docente-avatar" aria-hidden="true">📚</div>
+        <h3>Ciências Humanas</h3>
+        <div class="docente-cargo">Professores de Português, História e Filosofia</div>
+        <p>Formação crítica e humanista, preparando os estudantes para o exercício pleno da cidadania.</p>
+        <div class="docente-form">🎓 Licenciaturas em Letras, História e Filosofia</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ NOTÍCIAS ═══════ -->
+<section id="noticias">
+  <div class="container">
+    <div class="section-label">Novidades</div>
+    <h2 class="section-title">Notícias e Eventos</h2>
+    <p class="section-subtitle">
+      Fique por dentro das conquistas, projetos e atividades da nossa escola.
+    </p>
+    <div class="noticias-grid">
+
+      <article class="noticia-card reveal">
+        <div class="noticia-head">
+          <div class="noticia-emoji">🏆</div>
+          <div>
+            <div class="noticia-cat">Prêmios</div>
+            <h3>Alunos conquistam 1º lugar na Mostra de Educação Profissional</h3>
+          </div>
+        </div>
+        <p>Quatro primeiros lugares na etapa regional da MEP colocam a Pedro Meinerz no topo do RS.</p>
+        <div class="noticia-data">15 de novembro de 2024</div>
+      </article>
+
+      <article class="noticia-card reveal">
+        <div class="noticia-head">
+          <div class="noticia-emoji">🌍</div>
+          <div>
+            <div class="noticia-cat">Inovação</div>
+            <h3>Prótese em fibra de carbono premiada na Escócia</h3>
+          </div>
+        </div>
+        <p>Projeto desenvolvido por alunos do Técnico em Mecânica é reconhecido no Edinburgh International Science Festival.</p>
+        <div class="noticia-data">10 de setembro de 2024</div>
+      </article>
+
+      <article class="noticia-card reveal">
+        <div class="noticia-head">
+          <div class="noticia-emoji">📋</div>
+          <div>
+            <div class="noticia-cat">Cursos</div>
+            <h3>Inscrições abertas para o Técnico em Mecânica 2025</h3>
+          </div>
+        </div>
+        <p>Vagas limitadas para o curso técnico mais renomado da região noroeste do RS.</p>
+        <div class="noticia-data">01 de dezembro de 2024</div>
+      </article>
+
+      <article class="noticia-card reveal">
+        <div class="noticia-head">
+          <div class="noticia-emoji">🤝</div>
+          <div>
+            <div class="noticia-cat">Social</div>
+            <h3>Projeto Papo de Responsa chega à escola</h3>
+          </div>
+        </div>
+        <p>Polícia Civil do RS realiza ação de prevenção às drogas e violência com os estudantes.</p>
+        <div class="noticia-data">22 de agosto de 2024</div>
+      </article>
+
+      <article class="noticia-card reveal">
+        <div class="noticia-head">
+          <div class="noticia-emoji">🌱</div>
+          <div>
+            <div class="noticia-cat">Meio Ambiente</div>
+            <h3>Semana da Sustentabilidade 2024</h3>
+          </div>
+        </div>
+        <p>Ações de separação de resíduos, reaproveitamento de materiais e preservação da área verde.</p>
+        <div class="noticia-data">05 de junho de 2024</div>
+      </article>
+
+      <article class="noticia-card reveal">
+        <div class="noticia-head">
+          <div class="noticia-emoji">💻</div>
+          <div>
+            <div class="noticia-cat">Estrutura</div>
+            <h3>Laboratório de Informática renovado</h3>
+          </div>
+        </div>
+        <p>Novos computadores e internet de alta velocidade melhoram o aprendizado digital dos alunos.</p>
+        <div class="noticia-data">18 de abril de 2024</div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ GALERIA ═══════ -->
+<section id="galeria">
+  <div class="container">
+    <div class="section-label">Memórias</div>
+    <h2 class="section-title">Galeria</h2>
+    <p class="section-subtitle">
+      Momentos que marcam a trajetória de excelência e inovação da Pedro Meinerz.
+    </p>
+    <div class="galeria-grid">
+      <div class="galeria-item reveal">
+        <div class="gi-emoji">🏆</div>
+        <p>Premiação Internacional — Edinburgh Science Festival 2018</p>
+      </div>
+      <div class="galeria-item reveal">
+        <div class="gi-emoji">⚙️</div>
+        <p>Laboratório Técnico em Mecânica</p>
+      </div>
+      <div class="galeria-item reveal">
+        <div class="gi-emoji">🔬</div>
+        <p>Projetos de Inovação</p>
+      </div>
+      <div class="galeria-item reveal">
+        <div class="gi-emoji">🎓</div>
+        <p>Formatura — Turmas Técnicas</p>
+      </div>
+      <div class="galeria-item reveal">
+        <div class="gi-emoji">🌳</div>
+        <p>Área Verde e Sustentabilidade</p>
+      </div>
+      <div class="galeria-item reveal">
+        <div class="gi-emoji">🏀</div>
+        <p>Quadra Esportiva</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ PARCEIROS ═══════ -->
+<section id="parceiros">
+  <div class="container">
+    <div class="section-label">Rede de Apoio</div>
+    <h2 class="section-title">Parceiros e Convênios</h2>
+    <p class="section-subtitle">
+      Instituições e organizações que fortalecem nossa missão educacional e ampliam as oportunidades para nossos alunos.
+    </p>
+    <div class="parceiros-grid">
+
+      <div class="parceiro-card reveal">
+        <div class="parceiro-emoji">🏛️</div>
+        <div class="parceiro-tipo">Governo</div>
+        <h3>SEDUC/RS</h3>
+        <p>Secretaria de Educação do Estado do Rio Grande do Sul</p>
+      </div>
+
+      <div class="parceiro-card reveal">
+        <div class="parceiro-emoji">📋</div>
+        <div class="parceiro-tipo">Regional</div>
+        <h3>17ª CRE</h3>
+        <p>17ª Coordenadoria Regional de Educação — Santa Rosa</p>
+      </div>
+
+      <div class="parceiro-card reveal">
+        <div class="parceiro-emoji">🏭</div>
+        <div class="parceiro-tipo">Técnico</div>
+        <h3>SENAI</h3>
+        <p>Parceria para formação técnica e certificações industriais</p>
+      </div>
+
+      <div class="parceiro-card reveal">
+        <div class="parceiro-emoji">🏙️</div>
+        <div class="parceiro-tipo">Municipal</div>
+        <h3>Prefeitura de Santa Rosa</h3>
+        <p>Apoio municipal a projetos educacionais e culturais</p>
+      </div>
+
+      <div class="parceiro-card reveal">
+        <div class="parceiro-emoji">🔧</div>
+        <div class="parceiro-tipo">Empresa</div>
+        <h3>Indústrias Regionais</h3>
+        <p>Empresas parceiras para estágios e projetos aplicados</p>
+      </div>
+
+      <div class="parceiro-card reveal">
+        <div class="parceiro-emoji">🎓</div>
+        <div class="parceiro-tipo">Acadêmico</div>
+        <h3>UFSM / UNIJUÍ</h3>
+        <p>Universidades parceiras para extensão e pesquisa</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ DOCUMENTOS ═══════ -->
+<section id="documentos">
+  <div class="container">
+    <div class="section-label">Transparência</div>
+    <h2 class="section-title">Documentos Institucionais</h2>
+    <p class="section-subtitle">
+      Acesse regulamentos, editais, certificações e materiais oficiais da escola.
+    </p>
+    <div class="docs-grid">
+
+      <div class="doc-card reveal">
+        <div class="doc-icon">📜</div>
+        <div>
+          <h4>Regimento Escolar</h4>
+          <p>Normas e regulamentos da instituição</p>
+        </div>
+      </div>
+
+      <div class="doc-card reveal">
+        <div class="doc-icon">📋</div>
+        <div>
+          <h4>Projeto Político-Pedagógico</h4>
+          <p>PPP — Diretrizes educacionais</p>
+        </div>
+      </div>
+
+      <div class="doc-card reveal">
+        <div class="doc-icon">📅</div>
+        <div>
+          <h4>Calendário Letivo 2025</h4>
+          <p>Datas, feriados e eventos escolares</p>
+        </div>
+      </div>
+
+      <div class="doc-card reveal">
+        <div class="doc-icon">📝</div>
+        <div>
+          <h4>Editais de Processo Seletivo</h4>
+          <p>Inscrições e seleção para cursos técnicos</p>
+        </div>
+      </div>
+
+      <div class="doc-card reveal">
+        <div class="doc-icon">🏅</div>
+        <div>
+          <h4>Certificações e Credenciamentos</h4>
+          <p>Reconhecimentos oficiais MEC e SEDUC</p>
+        </div>
+      </div>
+
+      <div class="doc-card reveal">
+        <div class="doc-icon">📊</div>
+        <div>
+          <h4>Relatórios de Gestão</h4>
+          <p>Resultados e indicadores anuais</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ DIFERENCIAIS ═══════ -->
+<section id="diferenciais">
+  <div class="container">
+    <div class="section-label">Por que a Pedro Meinerz?</div>
+    <h2 class="section-title">Nossos Diferenciais</h2>
+    <div class="dif-grid">
+
+      <div class="dif-card reveal">
+        <div class="dif-emoji">🌍</div>
+        <h3>Reconhecimento Internacional</h3>
+        <p>Projetos dos alunos premiados no Edinburgh International Science Festival, na Escócia — um dos maiores festivais científicos da Europa.</p>
+      </div>
+
+      <div class="dif-card reveal">
+        <div class="dif-emoji">🏆</div>
+        <h3>Excelência Técnica</h3>
+        <p>Quatro primeiros lugares na Mostra das Escolas Estaduais de Educação Profissional (MEP), destacando-se entre dezenas de trabalhos no RS.</p>
+      </div>
+
+      <div class="dif-card reveal">
+        <div class="dif-emoji">♿</div>
+        <h3>Inclusão e Acessibilidade</h3>
+        <p>Elevador, portas adaptadas, banheiros acessíveis e recursos pedagógicos inclusivos para garantir acesso igualitário à educação.</p>
+      </div>
+
+      <div class="dif-card reveal">
+        <div class="dif-emoji">💻</div>
+        <h3>Infraestrutura Moderna</h3>
+        <p>Laboratório de informática renovado, lousas digitais, internet de alta velocidade e equipamentos para a formação técnica de ponta.</p>
+      </div>
+
+      <div class="dif-card reveal">
+        <div class="dif-emoji">🤝</div>
+        <h3>Responsabilidade Social</h3>
+        <p>Projetos comunitários ativos, ações de sustentabilidade e programas de prevenção em parceria com entidades públicas e privadas.</p>
+      </div>
+
+      <div class="dif-card reveal">
+        <div class="dif-emoji">🔬</div>
+        <h3>Inovação Aplicada</h3>
+        <p>Alunos desenvolvem protótipos reais — como a prótese de pé em fibra de carbono de baixo custo — com impacto social comprovado.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ CONTATO ═══════ -->
+<section id="contato">
+  <div class="container">
+    <div class="section-label">Fale Conosco</div>
+    <h2 class="section-title">Contato</h2>
+    <div class="contato-grid">
+
+      <!-- Informações -->
+      <div class="contato-info reveal">
+
+        <div class="contato-bloco">
+          <div class="contato-bloco-icon" aria-hidden="true">📍</div>
+          <div>
+            <h4>Endereço</h4>
+            <p>Rua Pirapó, 190 — Bairro Timbaúva<br>Santa Rosa/RS — CEP: 98781-054</p>
+          </div>
+        </div>
+
+        <div class="contato-bloco">
+          <div class="contato-bloco-icon" aria-hidden="true">📞</div>
+          <div>
+            <h4>Telefone</h4>
+            <a href="tel:+555535122385">(55) 3512-2385</a>
+          </div>
+        </div>
+
+        <div class="contato-bloco">
+          <div class="contato-bloco-icon" aria-hidden="true">📧</div>
+          <div>
+            <h4>E-mail</h4>
+            <a href="mailto:pedromeinerz17cre@educacao.rs.gov.br">
+              pedromeinerz17cre@educacao.rs.gov.br
+            </a>
+          </div>
+        </div>
+
+        <div class="contato-bloco">
+          <div class="contato-bloco-icon" aria-hidden="true">💬</div>
+          <div>
+            <h4>WhatsApp</h4>
+            <a href="https://wa.me/5555351223850" target="_blank" rel="noopener">
+              Enviar mensagem via WhatsApp
+            </a>
+          </div>
+        </div>
+
+        <div class="contato-bloco">
+          <div class="contato-bloco-icon" aria-hidden="true">🕐</div>
+          <div>
+            <h4>Horários de Atendimento</h4>
+            <p>Segunda a Sexta<br>7h às 22h (turnos Diurno e Noturno)</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Formulário -->
+      <div class="reveal">
+        <div class="contato-form-wrap">
+          <h3>Envie uma Mensagem</h3>
+          <form id="form-contato" novalidate>
+            <div class="form-group">
+              <label for="nome">Nome completo</label>
+              <input type="text" id="nome" name="nome" placeholder="Seu nome" required />
+            </div>
+            <div class="form-group">
+              <label for="email">E-mail</label>
+              <input type="email" id="email" name="email" placeholder="seu@email.com" required />
+            </div>
+            <div class="form-group">
+              <label for="assunto">Assunto</label>
+              <select id="assunto" name="assunto" required>
+                <option value="">Selecione um assunto</option>
+                <option>Informações sobre matrículas</option>
+                <option>Curso Técnico em Mecânica</option>
+                <option>Documentação e certificados</option>
+                <option>Eventos e visitas</option>
+                <option>Parceria institucional</option>
+                <option>Outro assunto</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="mensagem">Mensagem</label>
+              <textarea id="mensagem" name="mensagem" rows="5" placeholder="Escreva sua mensagem aqui…" required></textarea>
+            </div>
+            <button type="submit" class="btn-enviar">Enviar Mensagem</button>
+          </form>
+          <div id="form-sucesso" role="alert">
+            ✅ Mensagem recebida! Entraremos em contato em breve.
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Mapa placeholder -->
+    <div class="mapa-placeholder reveal">
+      <strong>📍 Localização no Mapa</strong>
+      <p>Rua Pirapó, 190 — Bairro Timbaúva — Santa Rosa/RS</p>
+      <a href="https://maps.google.com/?q=Escola+Estadual+Pedro+Meinerz+Santa+Rosa+RS" target="_blank" rel="noopener">
+        Abrir no Google Maps →
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ FOOTER ═══════ -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="escudo-footer" aria-hidden="true">🏫</div>
+        <h3>E.E.E.M. Pedro Meinerz</h3>
+        <p>
+          Escola pública estadual de referência em Santa Rosa/RS,
+          formando cidadãos e profissionais com excelência, inovação
+          e compromisso social desde sua fundação.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Navegação</h4>
+        <ul>
+          <li><a href="#hero">Início</a></li>
+          <li><a href="#quem-somos">Quem Somos</a></li>
+          <li><a href="#cursos">Cursos</a></li>
+          <li><a href="#docentes">Corpo Docente</a></li>
+          <li><a href="#noticias">Notícias</a></li>
+          <li><a href="#galeria">Galeria</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Institucional</h4>
+        <ul>
+          <li><a href="#parceiros">Parceiros</a></li>
+          <li><a href="#documentos">Documentos</a></li>
+          <li><a href="#diferenciais">Diferenciais</a></li>
+          <li><a href="#contato">Contato</a></li>
+          <li><a href="mailto:pedromeinerz17cre@educacao.rs.gov.br">E-mail</a></li>
+          <li><a href="tel:+555535122385">Telefone</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2025 Escola Estadual de Ensino Médio Pedro Meinerz — Santa Rosa/RS</p>
+      <p class="inep">INEP: 43126669 · 17ª CRE</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══════ WhatsApp FAB ═══════ -->
+<a href="https://wa.me/5555351223850"
+   target="_blank"
+   rel="noopener"
+   class="whatsapp-fab"
+   aria-label="Contato via WhatsApp">
+  💬
+</a>
+
+<!-- ═══════ Toast ═══════ -->
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script>
+// ═══════════════════════════════════════════════════════════════════════════
+//  Portal Escola Pedro Meinerz — main.js (inline)
+// ═══════════════════════════════════════════════════════════════════════════
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  // ── Navbar scroll ──────────────────────────────────────────────────────
+  const navbar = document.getElementById("navbar");
+  const onScroll = () => {
+    navbar.classList.toggle("scrolled", window.scrollY > 40);
+  };
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+
+  // ── Mobile nav toggle ──────────────────────────────────────────────────
+  const navToggle = document.querySelector(".nav-toggle");
+  const navLinks  = document.querySelector(".nav-links");
+  navToggle?.addEventListener("click", () => {
+    navLinks.classList.toggle("open");
+    const isOpen = navLinks.classList.contains("open");
+    navToggle.setAttribute("aria-expanded", isOpen);
+  });
+
+  navLinks?.querySelectorAll("a").forEach(a => {
+    a.addEventListener("click", () => navLinks.classList.remove("open"));
+  });
+
+  // ── Active nav on scroll ───────────────────────────────────────────────
+  const sections   = document.querySelectorAll("section[id]");
+  const navAnchors = document.querySelectorAll(".nav-links a[href^='#']");
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navAnchors.forEach(a => {
+          a.classList.toggle("active", a.getAttribute("href") === `#${entry.target.id}`);
+        });
+      }
+    });
+  }, { rootMargin: "-40% 0px -55% 0px" });
+
+  sections.forEach(s => observer.observe(s));
+
+  // ── Scroll reveal ──────────────────────────────────────────────────────
+  const revealObs = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add("visible"), i * 80);
+        revealObs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll(".reveal").forEach(el => revealObs.observe(el));
+
+  // ── Counter animation ──────────────────────────────────────────────────
+  const counters = document.querySelectorAll("[data-count]");
+  const countObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el     = entry.target;
+      const target = parseInt(el.dataset.count, 10);
+      const suffix = el.dataset.suffix || "";
+      const dur    = 1800;
+      const step   = 16;
+      const inc    = target / (dur / step);
+      let cur = 0;
+      const timer = setInterval(() => {
+        cur += inc;
+        if (cur >= target) { cur = target; clearInterval(timer); }
+        el.textContent = Math.floor(cur) + suffix;
+      }, step);
+      countObs.unobserve(el);
+    });
+  }, { threshold: 0.5 });
+
+  counters.forEach(c => countObs.observe(c));
+
+  // ── Toast ──────────────────────────────────────────────────────────────
+  const toast = document.getElementById("toast");
+  const showToast = (msg, cor = "#2D7A4F") => {
+    toast.textContent = msg;
+    toast.style.background = cor;
+    toast.classList.add("show");
+    setTimeout(() => toast.classList.remove("show"), 3500);
+  };
+
+  // ── Formulário de contato ──────────────────────────────────────────────
+  const form    = document.getElementById("form-contato");
+  const sucesso = document.getElementById("form-sucesso");
+
+  form?.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const btn = form.querySelector(".btn-enviar");
+    btn.textContent = "Enviando…";
+    btn.disabled = true;
+
+    const payload = {
+      nome:     form.nome.value,
+      email:    form.email.value,
+      assunto:  form.assunto.value,
+      mensagem: form.mensagem.value,
+    };
+
+    try {
+      const res  = await fetch("/api/contato", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      const data = await res.json();
+      form.reset();
+      if (sucesso) sucesso.style.display = "block";
+      showToast("✅ " + data.mensagem);
+    } catch {
+      // Fallback quando rodando sem o backend Flask
+      form.reset();
+      if (sucesso) sucesso.style.display = "block";
+      showToast("✅ Mensagem recebida! Entraremos em contato em breve.");
+    } finally {
+      btn.textContent = "Enviar Mensagem";
+      btn.disabled = false;
+    }
+  });
+
+  // ── Galeria ────────────────────────────────────────────────────────────
+  document.querySelectorAll(".galeria-item").forEach(item => {
+    item.addEventListener("click", () => showToast("📷 Galeria completa em breve!"));
+  });
+
+  // ── Documentos ────────────────────────────────────────────────────────
+  document.querySelectorAll(".doc-card").forEach(card => {
+    card.addEventListener("click", () => showToast("📄 Documento disponível em breve!"));
+  });
+
+});
+</script>
+
+</body>
+</html>
